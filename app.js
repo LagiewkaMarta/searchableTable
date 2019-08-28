@@ -1,4 +1,4 @@
-const createSearchInput = () => {
+const createSearchForm = () => {
   const inputContainer = document.querySelector("#portexe-search-root");
   const form = document.createElement("form");
   form.innerHTML = `
@@ -16,11 +16,7 @@ const listenOnInput = e => {
 
 const getTableData = () => {
   const table = document.getElementById("portexe-data-table");
-  const tbody = [...table.children[1].children];
-  console.log(tbody);
-  const trows = tbody.map(el => [...el.children].map(td => td.innerText));
-
-  return trows;
+  return [...table.children[1].children].map(el => [...el.children].map(td => td.innerText));
 };
 const refreshTable = tableData => {
   const tablebody = document.getElementById("portexe-data-table").children[1];
@@ -45,7 +41,7 @@ const search = (arr, searchTerm) => {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-  createSearchInput();
+  createSearchForm();
   const input = document.querySelector("#portexe-input");
   const tableData = getTableData();
   input.addEventListener("keyup", e => {
